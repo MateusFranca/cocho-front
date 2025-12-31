@@ -1,18 +1,97 @@
-# Vue 3 + TypeScript + Vite
+# Cocho - Sistema de Gestão de Cochos
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Sistema web para gerenciamento de cochos (bebedouros/comedouros) de gado e pecuaristas, com integração de sensores IoT para monitoramento de níveis de enchimento.
 
-## Recommended IDE Setup
+## Sobre o Projeto
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+O **Cocho** é uma aplicação frontend desenvolvida para auxiliar na gestão de propriedades rurais, permitindo o cadastro e acompanhamento de cochos com sensores, bem como o gerenciamento de pecuaristas (clientes).
 
-## Type Support For `.vue` Imports in TS
+## Tecnologias Utilizadas
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- **Vue.js 3** - Framework JavaScript progressivo com Composition API
+- **Vite** - Build tool para desenvolvimento rápido
+- **TypeScript** - Tipagem estática para JavaScript
+- **Tailwind CSS** - Framework CSS utilitário
+- **Vue Router** - Roteamento para Vue.js
+- **Axios** - Cliente HTTP para comunicação com API
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Funcionalidades
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### Autenticação
+- Login de administrador
+- Autenticação via token JWT
+- Proteção de rotas autenticadas
+
+### Gestão de Pecuaristas (Clientes)
+- Cadastro de novos pecuaristas
+- Listagem com filtros e busca
+- Edição de informações
+- Ativação/Desativação de registros
+
+### Gestão de Cochos
+- Cadastro de cochos com informações detalhadas
+- Associação de sensores
+- Configuração de limite crítico de enchimento
+- Agendamento de horários de execução
+- Vinculação com pecuaristas
+- Cadastro de endereço com integração de CEP
+- Listagem com filtros por status e pecuarista
+- Edição e gerenciamento de status
+
+## Estrutura do Projeto
+
+```
+src/
+├── components/          # Componentes reutilizáveis
+│   └── layouts/         # Componentes de layout (Header, Footer, Sidebar)
+├── pages/               # Páginas da aplicação
+│   ├── Authentication/  # Página de login
+│   ├── Register/        # Formulários de cadastro
+│   ├── Query/           # Páginas de consulta/listagem
+│   └── views/           # Views gerais (Home, 404)
+├── router/              # Configuração de rotas
+├── core/                # Middlewares e utilitários
+├── main.ts              # Ponto de entrada da aplicação
+└── App.vue              # Componente raiz
+```
+
+## Instalação
+
+1. Clone o repositório:
+```bash
+git clone <url-do-repositorio>
+cd cocho-front
+```
+
+2. Instale as dependências:
+```bash
+npm install
+```
+
+3. Configure a URL da API no arquivo `api-config.ts`:
+```typescript
+export const API_BASE_URL = "http://localhost:3000/api"
+```
+
+4. Inicie o servidor de desenvolvimento:
+```bash
+npm run dev
+```
+
+A aplicação estará disponível em `http://localhost:5173`
+
+## Scripts Disponíveis
+
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Gera a build de produção
+- `npm run preview` - Visualiza a build de produção localmente
+
+## Requisitos
+
+- Node.js 16+
+- npm ou yarn
+- API Backend rodando (configurada em `api-config.ts`)
+
+## Licença
+
+Este projeto é privado e de uso restrito.
